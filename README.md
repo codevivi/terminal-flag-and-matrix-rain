@@ -33,5 +33,5 @@ Npm package used: [chalk](https://www.npmjs.com/package/chalk)
    or
 
    ```sh
-   npm run matrix-rain
+   npm run matrix
    ```
