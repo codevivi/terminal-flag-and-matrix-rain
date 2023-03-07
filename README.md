@@ -18,7 +18,7 @@ Npm package used: [chalk](https://www.npmjs.com/package/chalk)
 **Must have [Node.js](https://nodejs.org)** installed
 
 1. Clone the repo
-2. Go into project directory and Install NPM packag
+2. Go into project directory and Install NPM packages
 
    ```sh
    npm install
