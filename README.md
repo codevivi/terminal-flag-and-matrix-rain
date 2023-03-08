@@ -8,6 +8,8 @@ Node, npm learning first homework
 
 Npm package used: [chalk](https://www.npmjs.com/package/chalk)
 
+**Matrix rain needs rethinking**
+
 🎯 **Goals:**
 
 - Write a program to paint LT flag in a terminal
@@ -34,4 +36,10 @@ Npm package used: [chalk](https://www.npmjs.com/package/chalk)
 
    ```sh
    npm run matrix
+   ```
+
+   or to run matrix rain from lesson
+
+   ```sh
+   npm run lesson
    ```
