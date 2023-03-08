@@ -38,7 +38,7 @@ function frozenRain() {
       line.push(drop[i]);
     });
 
-    console.log(line.join(""));
+    console.log(c.green(line.join("")));
   }
 }
 setInterval(() => {
