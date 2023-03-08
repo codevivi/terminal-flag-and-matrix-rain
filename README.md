@@ -13,7 +13,7 @@ Npm package used: [chalk](https://www.npmjs.com/package/chalk)
 - Write a program to paint LT flag in a terminal
 - Write a program to generate matrix rain animation in a terminal
 
-### 🏁 Getting started
+### 🏁 Getting started ⚠️ At your own risk
 
 **Must have [Node.js](https://nodejs.org)** installed
 
