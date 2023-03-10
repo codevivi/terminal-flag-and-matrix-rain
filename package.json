@@ -6,10 +6,9 @@
   "main": "index.js",
   "scripts": {
     "start": "node index.js",
-    "dev": "nodemon rain2.js",
     "flag": "node flag.js",
     "lesson": "node rain-pamokos.js",
-    "matrix": "node matrix-rain.js",
+    "rain": "node matrix-rain.js",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "type": "module",

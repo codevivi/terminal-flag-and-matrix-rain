@@ -26,7 +26,7 @@ setInterval(() => {
   } else {
     row++;
   }
-}, 400);
+}, 50);
 
 function makeSpaces() {
   spaces = [];

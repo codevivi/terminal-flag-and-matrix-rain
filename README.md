@@ -8,7 +8,11 @@ Node, npm learning first homework
 
 Npm package used: [chalk](https://www.npmjs.com/package/chalk)
 
-**Matrix rain needs rethinking**
+![alt app screenshot](./img/screenshot.png)
+
+Matrix rain - only repeating strings going down.
+
+![alt app screenshot](./img/screenshot2.png)
 
 🎯 **Goals:**
 
@@ -35,7 +39,7 @@ Npm package used: [chalk](https://www.npmjs.com/package/chalk)
    or
 
    ```sh
-   npm run matrix
+   npm run rain
    ```
 
    or to run matrix rain from lesson

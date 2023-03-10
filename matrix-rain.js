@@ -1,53 +1,64 @@
 import c from "chalk";
 
-const width = process.stdout.columns;
-const height = process.stdout.rows;
-function makeDrop() {
-  let drop = Array(height).fill(` `);
-  let dropStart = rand(0, height - 1);
-  let dropEnd = rand(dropStart, height);
-  let len = dropEnd - dropStart;
-  let dropChars = []; //one string going down
-  for (let i = 0; i < len; i++) {
-    dropChars.push(randChar());
-  }
-  let start = drop.slice(0, dropStart);
-  let end = drop.slice(dropEnd, height);
-  drop = [...start, ...dropChars, ...end];
-  return drop;
-}
-function moveDrop(drop) {
-  drop.unshift(drop.pop());
-  return drop;
-}
+const WIDTH = process.stdout.columns;
+const HEIGHT = process.stdout.rows;
 
-function generateDrops() {
-  let dropsArr = [];
-  for (let i = 0; i < width; i++) {
-    dropsArr.push(makeDrop());
-  }
-  return dropsArr;
-}
-
-let drops = generateDrops();
-
-function frozenRain() {
-  for (let i = 0; i <= height; i++) {
-    let line = [];
-    drops.forEach((drop) => {
-      line.push(drop[i]);
-    });
-
-    console.log(c.green(line.join("")));
-  }
-}
-setInterval(() => {
+process.on("SIGINT", () => {
+  //to clear console on exit
   console.clear();
-  drops = drops.map((drop) => {
-    return moveDrop(drop);
-  });
-  frozenRain();
-}, 30);
+  process.exit();
+});
+
+class Drop {
+  constructor() {
+    this.delay = 2;
+    this.speed = Number(Math.random().toFixed(1));
+    this.startY = rand(1, HEIGHT - 1) - 1;
+    this.endY = rand(this.startY, HEIGHT - 1) - 1; //not including
+    this.body = Array(HEIGHT).fill(` `);
+    for (let i = this.startY; i < this.endY; i++) {
+      this.body[i] = randChar();
+    }
+  }
+  move() {
+    if (this.delay > 0) {
+      if (this.speed === 0) {
+        this.speed = Number(Math.random().toFixed(1));
+      }
+      this.delay = this.delay - this.speed;
+      return;
+    }
+    //for now only repeating strings
+    this.body.unshift(this.body.pop());
+    this.start++;
+    this.end++;
+    this.delay = 2;
+  }
+}
+function initDrops() {
+  let arr = [];
+  for (let i = 0; i < WIDTH; i++) {
+    arr.push(new Drop());
+  }
+  return arr;
+}
+let dropsArr = initDrops();
+
+setInterval(() => {
+  let view = "";
+  for (let i = 0; i < HEIGHT; i++) {
+    let line = "";
+    dropsArr.forEach((drop) => {
+      line += drop.body[i];
+      if (i === 0) {
+        drop.move();
+      }
+    });
+    view += line;
+  }
+  process.stdout.write(c.green(view));
+  process.stdout.cursorTo(0, 0);
+}, 40);
 
 function randChar() {
   return String.fromCharCode(rand(33, 94));
